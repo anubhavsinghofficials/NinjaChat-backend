@@ -1,0 +1,22 @@
+{
+  "compilerOptions": {
+    "target": "ES2020",
+    "module": "NodeNext",
+    "moduleResolution": "NodeNext",
+    "baseUrl": ".",
+    "paths": {
+      "@src/*": ["src/*"]
+    },
+    "esModuleInterop": true,
+    "rootDir": "./src",
+    "outDir": "./dist",
+    "removeComments": true,
+    "forceConsistentCasingInFileNames": true,
+    "strict": true,
+    "noImplicitAny": true,
+
+    "skipLibCheck": true
+  },
+  "exclude": ["node_modules", "dist", "coverage"],
+  "include": ["src/**/*.ts"]
+}

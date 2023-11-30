@@ -1,18 +1,20 @@
 import { io } from '@src/app.js';
 
 export const nameSpace_Chat = () => {
-  // This 👇 is the name of the namespace the client will be connected to
   io.of('/chat').on('connection', (socket) => {
-    socket.on('new-join-request', (data: { name: string; room: string }) => {
-      console.log(data);
+    socket.emit('socketid', { socketId: socket.id });
+    socket.on('sendSocketId', () => {
+      socket.emit('socketid', { socketId: socket.id });
     });
-    // socket.join('newroom');
-    // socket.emit('messageFromServer', 'a message from server', 'server boss');
-    // socket.on('messagefromclient', (data, data2) => {
-    //   io.of('/chat').to('newroom').emit('messagefromroom', data, data2, 'kya haal chaal');
-    // });
-    // socket.on('clientroommsg', (msg) => {
-    //   io.of('/chat').to('newroom').emit('roomeaou', msg);
-    // });
+
+    socket.on('new-join-request', (data: { name: string; room: string }) => {
+      socket.join(data.room);
+    });
+
+    socket.on('message', (data: { name: string; room: string; message: string }) => {
+      const user = data.name;
+      const message = data.message;
+      io.of('/chat').to(data.room).emit('message', { user, message, socketId: socket.id });
+    });
   });
 };

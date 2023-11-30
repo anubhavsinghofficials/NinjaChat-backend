@@ -1,6 +1,7 @@
 import { io } from '@src/app.js';
 
 export const nameSpace_Chat = () => {
+  //
   io.of('/chat').on('connection', (socket) => {
     socket.emit('socketid', { socketId: socket.id });
     socket.on('sendSocketId', () => {
@@ -9,6 +10,7 @@ export const nameSpace_Chat = () => {
 
     socket.on('new-join-request', (data: { name: string; room: string }) => {
       socket.join(data.room);
+      socket.to(data.room).emit('new-ninja', { name: data.name });
     });
 
     socket.on('message', (data: { name: string; room: string; message: string }) => {

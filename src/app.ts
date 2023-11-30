@@ -25,7 +25,5 @@ nameSpace_Chat();
 // 👉 Running the http Server
 httpServer.listen(process.env.PORT || 8000, () => {
   const PORT = process.env.PORT || 8000;
-  const HOST = process.env.HOST || 'localhost';
-  const PROTOCOL = process.env.PROTOCOL || 'http';
-  console.log(`> Listening at ${PROTOCOL}://${HOST}:${PORT}`);
+  console.log(`> Listening at port ${PORT}`);
 });

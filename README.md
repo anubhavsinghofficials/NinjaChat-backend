@@ -42,6 +42,21 @@ Designing                - Adobe Illustrator
 ![Catting-Ninja-comp-2](https://github.com/anubhavsinghofficials/NinjaChat-backend/assets/132212797/eed6867e-fef8-4146-90e8-8c70dde1bfd9)
 
 
+### Getting Started
 
+Install Packages
 
+```bash
+npm install
+```
+Run the development server:
 
+```bash
+npm run dev
+```
+
+The server will run on [http://localhost:8000](http://localhost:8000)
+
+### Environment Variables
+
+See the `.env_example.txt` file in the src/config directory and set up you own `.env` file in the same directory for the environment variables
